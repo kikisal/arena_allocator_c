@@ -1,9 +1,9 @@
 #pragma once
 
-#define PLATFORM STD_LIBC_PLATFORM
+#define PLATFORM A
 
 #if PLATFORM != STD_LIBC_PLATFORM
-#   typedef size_t unsigned long long;
+typedef size_t unsigned long long;
 #else
 #   include <inttypes.h>
 #endif

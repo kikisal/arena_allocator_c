@@ -2,6 +2,10 @@
 
 #include <stdlib.h>
 
+#if PLATFORM != STD_LIBC_PLATFORM
+typedef uintptr_t unsigned long long;
+#endif
+
 #define REGION_DEFAULT_SIZE 256*1024*1024
 #define REGION_ELEMENT_TYPE uintptr_t
 
