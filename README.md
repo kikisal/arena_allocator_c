@@ -14,7 +14,7 @@ arena_t some_other_arena    = arena_create();
 
 int main() {
     // set temp arena
-    arena_set_context(&temp);
+    arena_set_context(&temp_arena);
 
     // allocate some things in the arena
     void* data = arena_alloc(400, NULL);
