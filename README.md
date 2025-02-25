@@ -25,7 +25,7 @@ int main() {
     arena_reset(NULL);
 
     void* ptr = arena_alloc(400, NULL);
-    // after reset the previous regions will be reused, thus same pointers
+    // after reset, the previous regions will be reused, thus same pointers
     assert(ptr == data);
 
     // or switch to another context    
