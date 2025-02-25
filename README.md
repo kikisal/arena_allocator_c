@@ -11,7 +11,7 @@ gcc -c arena.c -o arena.o
 
 ## Example
 
-```
+```C
 #include <stdio.h>
 
 #include "arena.h"
