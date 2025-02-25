@@ -1,13 +1,6 @@
-# Project Name
+# Arena Allocator
 
-A brief description of the project.
-
-## Compilation (You can use your own compiler)
-
-```sh
-# Here we used GCC
-gcc -c arena.c -o arena.o
-```
+Arena Allocator implementation in C
 
 ## Example
 
@@ -49,6 +42,14 @@ int main() {
     return 0;
 }
 ```
+
+## Compilation (You can use your own compiler)
+
+```sh
+# Here we used GCC
+gcc -c arena.c -o arena.o
+```
+or you can turn everything inside *arena.h* and make it single-header.
 
 for more example see the *examples* folder. This folder does not include
 all possible examples. You can always consult the *arena.h* header file to 
