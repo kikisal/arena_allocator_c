@@ -1,35 +1,40 @@
+// this is the same example as arena_test.c, but using the macros
+// ARENA_ALLOC(size), and ARENA_RESET() if you are bothered of adding
+// NULL at the end of every function call
+
 #include <stdio.h>
-// You can define this macro to define
-// ARENA_ALLOC and ARENA_RESET macros
-// in your code, which will allow you to do 
-// arena operations on the current bound context
-// without always having to put NULL at the end of
-// every ARENA_ALLOC() call.
 #define DEFINE_CURRCONTEXT_ALLOC
 #include "arena.h"
 
-
-arena_t temp               = arena_create();
-arena_t some_other_arena   = arena_create();
-
+arena_t temp_arena          = arena_create();
+arena_t some_other_arena    = arena_create();
 
 int main() {
-    arena_set_context(&temp);
-    
-    void* data = ARENA_ALLOC(400);
-    printf("%p\n", data);
+    // set temp arena
+    arena_set_context(&temp_arena);
 
+    // allocate some things in the arena
+    void* data = ARENA_ALLOC(400);
+    ARENA_ALLOC(20);
+    ARENA_ALLOC(43);
+
+    // reset current arena
     ARENA_RESET();
 
-    data = ARENA_ALLOC(400);
-    printf("%p\n", data);
+    void* ptr = ARENA_ALLOC(400);
+    // after reset the previous regions will be reused, thus same pointers
+    assert(ptr == data);
 
-    data = ARENA_ALLOC(400);
-    printf("%p\n", data);
+    // or switch to another context    
+    arena_set_context(&some_other_arena);
 
+    // allocate some stuff in this new arena
+    ARENA_ALLOC(1024);
+    ARENA_ALLOC(100);
+    ARENA_ALLOC(55);
 
-    arena_destroy(&temp);
+    // deallocate everything in a single call
+    arena_destroy(&temp_arena);
     arena_destroy(&some_other_arena);
-
     return 0;
 }
