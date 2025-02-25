@@ -5,7 +5,7 @@ A brief description of the project.
 ## Compilation (You can use your own compiler)
 
 ```sh
-# Clone the repository
+# Here we used GCC
 gcc -c arena.c -o arena.o
 ```
 
