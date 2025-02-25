@@ -1,17 +1,10 @@
-# Project Name
+# Arena Allocator
 
-A brief description of the project.
-
-## Compilation (You can use your own compiler)
-
-```sh
-# Here we used GCC
-gcc -c arena.c -o arena.o
-```
+Arena Allocator implementation in C
 
 ## Example
 
-```
+```C
 #include <stdio.h>
 
 #include "arena.h"
@@ -32,7 +25,7 @@ int main() {
     arena_reset(NULL);
 
     void* ptr = arena_alloc(400, NULL);
-    // after reset the previous regions will be reused, thus same pointers
+    // after reset, the previous regions will be reused, thus same pointers
     assert(ptr == data);
 
     // or switch to another context    
@@ -49,6 +42,14 @@ int main() {
     return 0;
 }
 ```
+
+## Compilation (You can use your own compiler)
+
+```sh
+# Here we used GCC
+gcc -c arena.c -o arena.o
+```
+or you can put everything inside *arena.h* and make it single-header.
 
 for more example see the *examples* folder. This folder does not include
 all possible examples. You can always consult the *arena.h* header file to 
